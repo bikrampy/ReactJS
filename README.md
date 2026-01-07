@@ -6,20 +6,27 @@ Welcome to your ReactJS learning journey! This repository contains practice mate
 
 ### Prerequisites
 - Node.js (v14 or higher)
-- npm or yarn
+- npm
 - A code editor (VS Code recommended)
 
 ### Installation
 
-1. Clone or navigate to this repository
-2. Install dependencies:
+1. Initialize a new React project using Vite:
     ```bash
-    npm install
+    npm create vite@latest my-react-app
     ```
 
-3. Start the development server:
+2. Follow the prompts to select "React" as the framework.
+
+3. Navigate and Install Dependencies:
     ```bash
-    npm start
+    cd my-react-app
+    npm i
+    ```
+
+4. Start the development server:
+    ```bash
+    npm run dev
     ```
 
 ## Learning Path
@@ -34,11 +41,14 @@ Welcome to your ReactJS learning journey! This repository contains practice mate
 
 ```
 ├── src/
+│   ├── assets/        # Static assets like images
 │   ├── components/    # Reusable components
-│   ├── pages/         # Page components
-│   └── App.js         # Main component
-├── public/
-└── package.json
+│   ├── main.jsx       # Entry point
+│   └── App.jsx        # Root component
+├── public/            # Static assets
+├── index.html         # HTML template
+├── vite.config.js     # Vite configuration
+└── package.json       # Project metadata and dependencies
 ```
 
 ## Resources
