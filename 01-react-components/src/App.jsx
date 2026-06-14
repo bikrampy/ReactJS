@@ -1,10 +1,16 @@
-import FavMovies from './FavouriteMovies'
+import LastWatchedMovies from "./components/LastWatchedMovies";
+import Footer from "./components/Footer";
+import Header from "./components/Header";
+import Body from "./components/Body";
 function App() {
-  return (
-    <>
-      <h1>My Favourite Movies</h1>
-      <FavMovies />
-    </>
-  )
+    return (
+        <div style={{ color: "white", backgroundColor: "black" }}>
+            <Header />
+            <hr />
+            <Body />
+            <hr />
+            <Footer />
+        </div>
+    );
 }
-export default App
+export default App;

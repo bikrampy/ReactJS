@@ -1,14 +1,20 @@
-import React from 'react'
-import { createRoot } from 'react-dom/client'
-import App from './App.jsx'
+import React from "react";
+import { createRoot } from "react-dom/client";
+import App from "./App.jsx";
 
-let El = <a href='https://google.com' target='_blank'>Visit Google</a>;
-let El2 = React.createElement('a', {href: 'https://google.com', target: '_black'}, 'Visit Google');
-createRoot(document.getElementById('root')).render(
-  <div>
-    <App />
-    {El}
-    <br />
-    {El2}
-  </div>
-)
+const element = React.createElement("h1", null, "Hello React");
+let websiteURL = "https://www.beingbifrons.shop";
+let websiteLink = (
+    <a href={websiteURL} target="_blank">
+        Visit This Website
+    </a>
+);
+
+createRoot(document.getElementById("root")).render(
+    <div style={{ color: "white", backgroundColor: "black" }}>
+        {element}
+        <App />
+        {websiteLink}
+        <br />
+    </div>,
+);

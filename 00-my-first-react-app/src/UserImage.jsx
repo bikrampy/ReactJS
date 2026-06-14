@@ -1,7 +1,9 @@
-import ProfileImage from './assets/PP_Resume.png'
+import ProfileImage from "./assets/pic.png";
 
 export default function UserImage() {
-  return (
-    <img src={ProfileImage} alt="Profile Image" width={200} />
-  )
+    return (
+        <div>
+            <img src={ProfileImage} alt="Profile Image" width={200} />
+        </div>
+    );
 }
