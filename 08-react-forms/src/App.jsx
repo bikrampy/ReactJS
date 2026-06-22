@@ -1,122 +1,134 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
+import { useState } from "react";
 
 function App() {
-  const [count, setCount] = useState(0)
+    const [formdata, setFormdata] = useState({
+        name: "",
+        email: "",
+        phone: "",
+        message: "",
+        country: "",
+        isGraduated: false,
+        gender: "",
+    });
+    function handleChange(event) {
+        const { name, value } = event.target;
 
-  return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
-
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
+        setFormdata((prev) => ({
+            ...prev,
+            [name]: value,
+        }));
+    }
+    function handleSubmit(event) {
+        event.preventDefault();
+        alert(formdata);
+    }
+    return (
+        <>
+            <form onSubmit={handleSubmit}>
+                <div>
+                    <label htmlFor="name">Enter Your Name:</label>
+                    <input
+                        type="text"
+                        name="name"
+                        id="name"
+                        value={formdata.name}
+                        onChange={handleChange}
+                    />
+                </div>
+                <div>
+                    <label htmlFor="email">Enter Your Email:</label>
+                    <input
+                        type="text"
+                        name="email"
+                        id="email"
+                        value={formdata.email}
+                        onChange={handleChange}
+                    />
+                </div>
+                <div>
+                    <label htmlFor="phone">Enter Your Phone Number:</label>
+                    <input
+                        type="text"
+                        name="phone"
+                        id="phone"
+                        value={formdata.phone}
+                        onChange={handleChange}
+                    />
+                </div>
+                <div>
+                    <label htmlFor="message">Enter Your Message:</label>
+                    <textarea
+                        name="message"
+                        id="message"
+                        value={formdata.message}
+                        onChange={handleChange}
+                    />
+                </div>
+                <div>
+                    <label htmlFor="country">Select Your Country:</label>
+                    <select
+                        id="country"
+                        value={formdata.country}
+                        onChange={(e) =>
+                            setFormdata({
+                                ...formdata,
+                                country: e.target.value,
+                            })
+                        }
+                    >
+                        <option value="">Select Country</option>
+                        <option value="India">India</option>
+                        <option value="Canada">Canada</option>
+                    </select>
+                </div>
+                <div>
+                    <label htmlFor="graduationStatus">Graduated</label>
+                    <input
+                        id="graduationStatus"
+                        type="checkbox"
+                        checked={formdata.isGraduated}
+                        onChange={(e) =>
+                            setFormdata({
+                                ...formdata,
+                                isGraduated: e.target.checked,
+                            })
+                        }
+                    />
+                </div>
+                <div>
+                    <label htmlFor="male">Male</label>
+                    <input
+                        id="male"
+                        type="radio"
+                        value="Male"
+                        checked={formdata.gender === "Male"}
+                        onChange={(e) =>
+                            setFormdata({ ...formdata, gender: e.target.value })
+                        }
+                    />
+                    <label htmlFor="female">Female</label>
+                    <input
+                        id="female"
+                        type="radio"
+                        value="Female"
+                        checked={formdata.gender === "Female"}
+                        onChange={(e) =>
+                            setFormdata({ ...formdata, gender: e.target.value })
+                        }
+                    />
+                </div>
+                <button type="submit">Submit</button>
+            </form>
+            <div>
+                <h2>{formdata.name}</h2>
+                <h2>{formdata.email}</h2>
+                <h2>{formdata.phone}</h2>
+                <h2>{formdata.country}</h2>
+                {formdata.isGraduated && <h2>Graduated</h2>}
+                <h2>{formdata.gender}</h2>
+                <p>{formdata.message}</p>
+            </div>
+        </>
+    );
 }
-
-export default App
+export default App;
